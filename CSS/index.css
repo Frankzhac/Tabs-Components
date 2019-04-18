@@ -9,6 +9,21 @@
   left: 25px;
   cursor: pointer;
 }
+.dropdown {
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+    animation-delay: 2s;
+}
+
+@-webkit-keyframes slide {
+    100% { left: 0; }
+}
+
+@keyframes slide {
+    100% { left: 0; }
+}
+
 .dropdown .dropdown-button {
   padding: 15px;
   border: 3px solid #ffffff;
