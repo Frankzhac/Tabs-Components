@@ -1,8 +1,8 @@
 class Tabs {
-  constructor(tabConstructor) {
-    this.tabConstructor = tabConstructor;
-    this.data = tabConstructor.dataset.tab;
-    this.tabLink = new TabLink(this.tabConstructor);
+  constructor(tabElement) {
+    this.tabElement = tabElement;
+    this.data = this.element.dataset.tab;
+    this.tabLink = new TabLink(this.tabElement);
     this.tabSelect = document.querySelector(".tabs-link-selected");
   }
 
