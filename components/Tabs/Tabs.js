@@ -1,13 +1,13 @@
-class Tabs {
-  constructor(tabElement) {
-    this.tabElement = tabElement;
-    this.data = this.element.dataset.tab;
-    this.tabLink = new TabLink(this.tabElement);
-    this.tabSelect = document.querySelector(".tabs-link-selected");
-  }
-
-  deselect() {}
-}
+// class Tabs {
+//   constructor(tabElement) {
+//     this.tabElement = tabElement;
+//     this.data = this.element.dataset.tab;
+//     this.tabLink = new TabLink(this.tabElement);
+//     this.tabSelect = document.querySelector(".tabs-link-selected");
+//   }
+//
+//   deselect() {}
+// }
 
 
 class TabLink {
@@ -19,13 +19,15 @@ class TabLink {
     this.data = this.element.dataset.tab;
 
     // Using the custom data attribute get the associated Item element
-    this.itemElement = document.querySelector(`.tabs-item[data-tab='${this.data}']`);
+    this.item = document.querySelector(`.tabs-item[data-tab='${this.data}']`);
 
     // Using the Item element, create a new instance of the TabItem class
     this.tabItem = new TabItem(this.itemElement);
 
     // Add a click event listener on this instance, calling the select method on click
-    this.element.addEventListener('click', event => this.select(event));
+    this.element.addEventListener('click', () => {
+      this.select();
+    });
   }
 
   select() {
@@ -33,7 +35,9 @@ class TabLink {
     const links = document.querySelectorAll(".tabs-link");
 
     // Using a loop or the forEach method remove the 'tabs-link-selected' class from all of the links
-    links.forEach(link => link.classList.remove("tabs-link-selected"));
+    links.forEach(link => {
+      link.classList.remove("tabs-link-selected");
+    });
 
     // Add a class named "tabs-link-selected" to this link
     this.element.classList.add("tabs-link-selected");
@@ -42,10 +46,10 @@ class TabLink {
     this.tabItem.select();
   }
 
-  deselect() {
-    this.element.classList.remove('tabs-link-selected');
-    this.tabItem.deselect();
-  }
+  // deselect() {
+  //   this.element.classList.remove('tabs-link-selected');
+  //   this.tabItem.deselect();
+  // }
 }
 
 class TabItem {
@@ -59,14 +63,16 @@ class TabItem {
     const items = document.querySelectorAll(".tabs-item");
 
     // Remove the class "tabs-item-selected" from each element
-    items.forEach(item => item.classList.remove("tabs-item-selected"));
+    items.forEach(item => {
+      item.classList.remove("tabs-item-selected");
+    });
     // Add a class named "tabs-item-selected" to this element
     this.element.classList.add("tabs-item-selected");
   }
 
-  deselect() {
-    this.element.classList.remove('tabs-link-selected');
-  }
+  // deselect() {
+  //   this.element.classList.remove('tabs-link-selected');
+  // }
 }
 
 /* START HERE:
@@ -79,4 +85,4 @@ class TabItem {
 
 */
 
-links = document.querySelectorAll(".tab-link").forEach(tabLinks => new Tablinks(tabLinks));
+let links = document.querySelectorAll(".tab-link").forEach( link => new Tablinks(link));
